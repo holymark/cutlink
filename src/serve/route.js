@@ -23,10 +23,10 @@ router.get("/:encodedId", async (req, res) => {
   try {
     const encodedId = await URLObj.findOne({ encodedId: req.params.encodedId });
 
-    res.send(encodedId.path);
+    // res.send(encodedId.path);
 
     //// or redirect the user:
-    // res.redirect(encodedId.path);
+    res.redirect(encodedId.path);
   } catch (e) {
     res.send(e);
   }

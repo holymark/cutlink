@@ -4,6 +4,8 @@ import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import config from "./config";
 import route from "./serve/route";
+import path from "path";
+
 /// database
 const mongodbUrl = config.MONGODB_URL;
 mongoose
@@ -18,7 +20,13 @@ mongoose
 const app = express();
 
 app.use(bodyParser.json());
-app.use("/api", route);
+app.use("/cut", route);
+
+app.use(express.static(path.join(__dirname, "./public")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(`${__dirname}/./public/index.html`));
+});
+
 app.listen(config.PORT, () => {
   console.log("Server started at http://localhost:" + config.PORT);
 });
