@@ -75,4 +75,4 @@ Shortner.prototype.reverseString = function (str) {
   return reversedStr;
 };
 
-export default Shortner;
+module.exports = Shortner;
