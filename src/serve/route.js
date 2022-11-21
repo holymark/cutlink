@@ -1,6 +1,6 @@
-import { Router } from "express";
-import Shortner from "../lib/shortner";
-import URLObj from "./model";
+const { Router } = require("express");
+const Shortner = require("../lib/shortner");
+const URLObj = require("./model");
 const router = Router();
 const s = new Shortner();
 
@@ -32,4 +32,4 @@ router.get("/:encodedId", async (req, res) => {
   }
 });
 
-export default router;
+module.exports = router;

@@ -3,6 +3,7 @@
   "description": "url shortner with node.js",
   "version": "1.0.0",
   "main": "src/server.js",
+  "license": "MIT",
   "scripts": {
     "start": "nodemon --watch src --exec babel-node src/server.js",
     "build": "rm -rf dist && babel backend -d dist  && cd frontend && npm install && npm run build",

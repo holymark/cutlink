@@ -1,19 +1,19 @@
 /// depndencies
-import express from "express";
-import mongoose from "mongoose";
-import bodyParser from "body-parser";
-import config from "./config";
-import route from "./serve/route";
-import path from "path";
+const express = require("express");
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const config = require("./config");
+const route = require("./serve/route");
+const path = require("path");
 
 /// database
-const mongodbUrl = config.MONGODB_URL;
 mongoose
-  .connect(mongodbUrl, {
+  .connect(config.MONGODB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
   })
+  .then(() => console.log("success connection to DB"))
   .catch((error) => console.log(error.reason));
 
 /// server
