@@ -221,7 +221,7 @@
               opacity: 0.7;
             "
           >
-            the free url shortener for long any ugly links
+            the free url shortener for long and ugly links
           </h3>
         </div>
       </section>
@@ -304,6 +304,10 @@
       var pathText = "";
 
       path.addEventListener("keyup", function () {
+        // console.log(this.value);
+        pathText = this.value;
+      });
+      path.addEventListener("paste", function () {
         // console.log(this.value);
         pathText = this.value;
       });
