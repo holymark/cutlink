@@ -10,8 +10,8 @@
     "heroku-postbuild-x": "npm run build && cd frontend && npm install && npm run build"
   },
   "author": {
-    "name": "Holy Makroghop Mark",
-    "url": "https://github.com/makroghop"
+    "name": "Holy Mark",
+    "url": "https://github.com/holymark"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
