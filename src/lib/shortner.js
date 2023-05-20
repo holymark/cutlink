@@ -1,6 +1,6 @@
 /**
  *
- * @author Holy Mark <https://github.com/makroghop>
+ * @author Holy Mark <https://github.com/holymark>
  * @file functions for the url shortner API
  */
 
