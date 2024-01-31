@@ -1,20 +1,20 @@
-# Url Shortner API
+# 🌐 Url Shortener API
 
-## usage
+## 🚀 Usage
 
-- create a new url short-link
+- Create a new URL short-link
 
 ```json
 {
   "method": "POST",
   "path": "/api",
 
-  // what you are sending
+  // What you are sending
   "body": {
     "path": "https://www.google.coom"
   },
 
-  // all is ok  (200)
+  // All is ok (200)
   "payload": {
     "path": "https://www.google.coom",
     "pureId": "1492432",
@@ -23,16 +23,19 @@
 }
 ```
 
-- get a shortened-link
+- Get a shortened-link
 
 ```json
 {
   "method": "GET",
   "path": "/api/gqpE",
 
-  // what you are recieving
+  // What you are receiving
   "response": "https://www.google.com"
 }
 ```
 
-## Done
+## ✅ Done
+`;
+
+console.log(readmeUrlShortener);
