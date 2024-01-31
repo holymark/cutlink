@@ -1,364 +1,257 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cut.Link | Url cutter</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cut.Link | Url cutter</title>
 
-    <style>
-      body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      }
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      :root {
-        --primary: purple;
-        --secondary: #4d1259;
-        --gradient: linear-gradient(
-          205deg,
-          #5d0165 28%,
-          #8657a8 51%,
-          #4d1259 67%
-        );
-        --light__purple: #ff53ff;
-      }
-      nav {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 4px 15px;
-        background: var(--gradient);
-      }
-      .logo {
-        color: white;
-        font-weight: 900;
-        font-size: 19px;
-      }
-      .nav-wrapper {
-        margin: 0 auto;
-      }
-      .nav-wrapper ul {
-        list-style: none;
-        margin-top: 2%;
-      }
-      .nav-wrapper ul li {
-        width: 170px;
-        height: 50px;
-        border: transparent;
-        line-height: 50px;
-        text-align: center;
-        float: left;
-        position: relative;
-        font-family: "Teko", sans-serif;
-      }
-      .nav-wrapper ul li a {
-        color: #fff;
-        font-size: 14px;
-        font-weight: 600;
-        text-decoration: none;
-        display: block;
-      }
-      .nav-wrapper ul li:hover {
-        background: var(--primary);
-        transition: 0.5s;
-      }
-      .nav-wrapper ul ul {
-        display: none;
-      }
-      .nav-wrapper ul li:hover > ul {
-        display: block;
-        border: transparent;
-      }
-      .div {
-        min-height: 84vh;
-        background: linear-gradient(
-            45deg,
-            var(--light__purple) 33%,
-            rgba(0, 0, 0, 0.6) 35%
-          ),
-          url(./rain.jpg);
-        /* background: linear-gradient(45deg, #ffcc5c 33%, rgba(0, 0, 0, 0.6) 35%), url(https://images.unsplash.com/photo-1510519138101-570d1dca3d66);  */
-      }
-      .barner {
-        text-align: center;
-        display: grid;
-        place-items: center;
-      }
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-      .banner-title {
-        margin: 46px 0px;
-        color: #fff;
-      }
+    :root {
+      --primary: purple;
+      --secondary: #4d1259;
+      --gradient: linear-gradient(205deg, #5d0165 28%, #8657a8 51%, #4d1259 67%);
+      --light__purple: #ff53ff;
+    }
 
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 4px 15px;
+      background: var(--gradient);
+    }
+
+    .logo {
+      color: white;
+      font-weight: 900;
+      font-size: 19px;
+    }
+
+    .nav-wrapper {
+      margin: 0 auto;
+    }
+
+    .nav-wrapper ul {
+      list-style: none;
+      margin-top: 2%;
+      display: flex;
+    }
+
+    .nav-wrapper ul li {
+      width: 170px;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      font-family: "Teko", sans-serif;
+      margin-right: 15px;
+    }
+
+    .nav-wrapper ul li a {
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      display: block;
+    }
+
+    .nav-wrapper ul li:hover {
+      background: var(--primary);
+      transition: 0.5s;
+    }
+
+    .div {
+      min-height: 84vh;
+      background: linear-gradient(
+          45deg,
+          var(--light__purple) 33%,
+          rgba(0, 0, 0, 0.6) 35%
+        ),
+        url(./rain.jpg);
+    }
+
+    .barner {
+      text-align: center;
+      display: grid;
+      place-items: center;
+    }
+
+    .banner-title {
+      margin: 46px 0px;
+      color: #fff;
+    }
+
+    .banner-title h1 {
+      font-size: 34px;
+      margin-bottom: 30px;
+    }
+
+    .banner-title h1 span {
+      color: var(--light__purple);
+    }
+
+    .a_container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    form {
+      position: absolute;
+      top: 45%;
+      left: 0%;
+      right: 0%;
+      margin: 0px 10px;
+    }
+
+    #shortened-url {
+      display: none;
+    }
+
+    form input[type="url"] {
+      border: 2px solid gainsboro;
+      font-size: 18px;
+      padding: 23px 26px;
+      width: 100%;
+      outline-color: var(--primary);
+    }
+
+    #url-copy {
+      background: #f0d6f5;
+      overflow: hidden;
+      width: 100%;
+      display: flex;
+      padding: 20px 26px;
+      font-size: 18px;
+      margin-top: 13px;
+      border: 2px solid var(--primary);
+      align-items: center;
+      justify-content: space-between;
+      position: inherit;
+    }
+
+    form .btn,
+    .copy {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      background-color: var(--primary);
+      border: 0;
+      color: #fff;
+      font-size: 19px;
+      cursor: pointer;
+      width: 100px;
+      border-radius: 12px;
+      margin: 8px;
+    }
+
+    .shortened_url {
+      margin-top: 12px;
+      padding: 13px;
+    }
+
+    footer .container {
+      padding: 13px;
+      min-height: 5pc;
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+      background: var(--primary);
+      color: white;
+    }
+
+    @media screen and (min-width: 527px) {
       .banner-title h1 {
-        font-size: 34px;
+        font-size: 64px;
         margin-bottom: 30px;
       }
+    }
 
-      .banner-title h1 span {
-        color: var(--light__purple);
-      }
-
-      .a_container {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-      }
+    @media screen and (min-width: 836px) {
       form {
-        position: absolute;
-        top: 45%;
-        left: 0%;
-        right: 0%;
-        margin: 0px 10px;
-        /* width: 500px;
-        max-width: 100%; */
+        margin: 0px 12rem;
       }
-      #shortened-url {
-        display: none;
-      }
-      form input[type="url"] {
-        border: 2px solid gainsboro;
-        font-size: 18px;
-        padding: 23px 26px;
-        width: 100%;
-        outline-color: var(--primary);
-      }
-
-      #url-copy {
-        background: #f0d6f5;
-        overflow: hidden;
-        width: 100%;
-        display: flex;
-        padding: 20px 26px;
-        font-size: 18px;
-        margin-top: 13px;
-        border: 2px solid var(--primary);
-        align-items: center;
-        justify-content: space-between;
-        position: inherit;
-      }
-      form .btn,
-      .copy {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        background-color: var(--primary);
-        border: 0;
-        color: #fff;
-        font-size: 19px;
-        cursor: pointer;
-        width: 100px;
-        border-radius: 12px;
-        margin: 8px;
-      }
-      .shortened_url {
-        margin-top: 12px;
-        padding: 13px;
-      }
-
-      footer .container {
-        padding: 13px;
-        min-height: 5pc;
-        display: grid;
-        place-items: center;
-        font-size: 20px;
-        background: var(--primary);
-        color: white;
-      }
-      @media screen and (min-width: 527px) {
-        .banner-title h1 {
-          font-size: 64px;
-          margin-bottom: 30px;
-        }
-      }
-      @media screen and (min-width: 836px) {
-        form {
-          margin: 0px 12rem;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <nav>
-        <div class="left">
-          <div class="logo">cut.link</div>
-        </div>
-        <div class="right">
-          <div class="nav-wrapper">
-            <ul>
-              <!-- <li><a href="/">Home</a></li>
-              <li><a href="./about.html">About</a></li> -->
-              <li><a href="./docs.html">API doc</a></li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
-    <div class="div">
-      <section class="barner">
-        <div class="banner-title">
-          <h1>
-            cut.<span
-              >link<br />
-              url</span
-            >
-            shortener
-          </h1>
-          <h3
-            style="
-              color: #f4e5f4;
-              font-size: larger;
-              padding: 0 7px;
-              font-family: system-ui;
-              opacity: 0.7;
-            "
-          >
-            the free url shortener for long and ugly links
-          </h3>
-        </div>
-      </section>
-
-      <div class="a_container">
-        <form id="url-form">
-          <div style="position: relative">
-            <input
-              type="url"
-              placeholder="any long url"
-              id="url_path"
-              name="path"
-            />
-            <input type="submit" value="submit" class="btn" />
-          </div>
-
-          <!-- For copy -->
-          <div id="url-copy">
-            <div id="copy-url">
-              <a href="/" style="display: block" id="short-link">cut.link</a>
-            </div>
-            <button class="btn" type="button" id="copy-btn">copy</button>
-          </div>
-        </form>
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="left">
+        <div class="logo">cut.link</div>
       </div>
-    </div>
-    <section class="about" style="padding: 31px">
-      <div class="text-header">
-        <h3 style="font-size: 1.3rem; color: #343434; font-family: system-ui">
-          A fast and simple URL shortener
+      <div class="right">
+        <div class="nav-wrapper">
+          <ul>
+            <!-- <li><a href="/">Home</a></li>
+            <li><a href="./about.html">About</a></li> -->
+            <li><a href="./docs.html">API doc</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <div class="div">
+    <section class="barner">
+      <div class="banner-title">
+        <h1>
+          cut.<span
+            >link<br />
+            url</span
+          >
+          shortener
+        </h1>
+        <h3
+          style="
+            color: #f4e5f4;
+            font-size: larger;
+            padding: 0 7px;
+            font-family: system-ui;
+            opacity: 0.7;
+          "
+        >
+          the free url shortener for long and ugly links
         </h3>
       </div>
-
-      <div
-        class="desc"
-        style="
-          line-height: 1.8;
-          margin-top: 12px;
-          font-weight: 600;
-          opacity: 0.7;
-          font-size: 18px;
-        "
-      >
-        <p>
-          cut.link is free url shortner transforming long ugly links into nice
-          memorable and trackable short URLs. Use it to shorten links for any
-          social media platforms, blogs, SMS, emails, ads, or pretty much
-          anywhere else you want to share them. Twitter, Facebook, Instagram,
-          Twitter, Discord, emails etc. cut.link is just like any other URL
-          shortener i.e bit.ly.
-          <br />
-          Any shortened link is valid for 12day
-        </p>
-      </div>
     </section>
-    <footer>
-      <div class="container">
-        <small>
-          copyright cut.<span style="color: var(--light__purple)">link</span>
-          &copy; 2020
-        </small>
 
-        <br />
-        <small
-          >made with 💖 by
-          <a style="color: white" href="https://github.com/makroghop"
-            >@makroghop</a
-          ></small
-        >
-      </div>
-    </footer>
+    <div class="a_container">
+      <form id="url-form">
+        <div style="position: relative">
+          <input
+            type="url"
+            placeholder="any long url"
+            id="url_path"
+            name="path"
+          />
+          <input type="submit" value="submit" class="btn" />
+        </div>
 
-    <script>
-      const xhr = new XMLHttpRequest();
-      const path = document.getElementById("url_path");
-      const formElement = document.forms[0];
-      var shortLink = document.getElementById("short-link");
-      var copyButton = document.getElementById("copy-btn");
-      var currentLocation = window.location.host;
-      var pathText = "";
+        <!-- For copy -->
+        <div id="url-copy">
+          <div id="copy-url">
+            <a href="/" style="display: block" id="short-link">cut.link</a>
+          </div>
+          <button class="btn" type="button" id="copy-btn">copy</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <section class="about" style="padding: 31px">
+    <div class="text-header">
+      <h3 style="font-size: 1.3rem; color: #343434; font-family: system-ui">
+        A fast and simple URL shortener
+      </h3>
+    </div>
 
-      path.addEventListener("keyup", function () {
-        // console.log(this.value);
-        pathText = this.value;
-      });
-      path.addEventListener("paste", function () {
-        // console.log(this.value);
-        pathText = this.value;
-      });
-      function sendPathForSHortLink() {
-        var encodedId = "";
-        fetch("/cut", {
-          method: "POST",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ path: pathText }),
-        })
-          .then((response) => response.json())
-          .then((response) => {
-            encodedId = response["encodedId"];
-
-            var href = `http://${currentLocation}/cut/${encodedId}`;
-            shortLink.href = href;
-            shortLink.innerHTML = href;
-          });
-      }
-
-      function setShortLink() {
-        formElement.addEventListener("submit", function (e) {
-          if (pathText !== "") {
-            e.preventDefault();
-            sendPathForSHortLink();
-          } else {
-            alert("value cannot be empty");
-            return false;
-          }
-        });
-      }
-      copyButton.addEventListener("click", function () {
-        var el = document.createElement("textarea");
-        el.value = shortLink.innerText;
-
-        document.body.appendChild(el);
-        el.select();
-        document.execCommand("copy");
-        this.innerText = "copied";
-        setTimeout(() => {
-          this.innerText = "copy";
-        }, 1000);
-        document.body.removeChild(el);
-      });
-
-      /////////////////////////////////////////////
-
-      setShortLink();
-    </script>
-  </body>
-</html>
+    <div
