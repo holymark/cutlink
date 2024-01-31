@@ -1,51 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cut.Link ApI Documentation</title>
-  </head>
-  <body>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cut.Link API Documentation</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      margin: 20px;
+    }
+    
+    code {
+      display: block;
+      background-color: #f4f4f4;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+
+<code>
+  <h1>Url Shortener API</h1>
+  <h2>Usage</h2>
+
+  <h3>Create a new URL short-link</h3>
+  <pre>
     <code>
-      # Url Shortner API
-      <br />
-      ## usage
-      <br />
-      - create a new url short-link
-      <br />
-      ```json<br />
-      {<br />
-      "method": "POST",<br />
-      "path": "/api",<br />
-      <br />
-      // what you are sending<br />
-      "body": {<br />
-      "path": "https://www.google.coom"<br />
-      },<br />
+      {
+        "method": "POST",
+        "path": "/api",
 
-      // all is ok (200)<br />
-      "payload": {<br />
-      "path": "https://www.google.coom",<br />
-      "pureId": "1492432",<br />
-      "encodedId": "gqpE"<br />
-      }<br />
-      }<br />
-      ```<br />
+        // What you are sending
+        "body": {
+          "path": "https://www.google.com"
+        },
 
-      - get a shortened-link<br />
-      <br />
-      ```json<br />
-      {<br />
-      "method": "GET",<br />
-      "path": "/api/gqpE",<br />
-      <br />
-      // what you are recieving<br />
-      "response": "https://www.google.com"<br />
-      }<br />
-      ```
-      <br />
-      ## Done
+        // All is ok (200)
+        "payload": {
+          "path": "https://www.google.com",
+          "pureId": "1492432",
+          "encodedId": "gqpE"
+        }
+      }
     </code>
-  </body>
+  </pre>
+
+  <h3>Get a shortened-link</h3>
+  <pre>
+    <code>
+      {
+        "method": "GET",
+        "path": "/api/gqpE",
+
+        // What you are receiving
+        "response": "https://www.google.com"
+      }
+    </code>
+  </pre>
+
+  <h2>Done</h2>
+</code>
+
+</body>
 </html>
