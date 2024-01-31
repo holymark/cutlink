@@ -36,6 +36,3 @@
 ```
 
 ## ✅ Done
-`;
-
-console.log(readmeUrlShortener);
